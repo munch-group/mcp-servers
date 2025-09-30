@@ -1,0 +1,27 @@
+{
+  "name": "string-mcp",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "string-mcp": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["string", "protein", "interactions", "mcp"],
+  "author": "",
+  "license": "ISC",
+  "description": "MCP server for STRING protein-protein interaction database API",
+  "dependencies": {
+    "@mcp/rest-utils": "^1.0.0",
+    "@modelcontextprotocol/sdk": "^1.18.2",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "typescript": "^5.9.2"
+  }
+}

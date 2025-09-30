@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "ensembl": {
+      "command": "node",
+      "args": [
+        "/Users/kmt/ensembl_mcp/build/index.js"
+      ]
+    }
+  }
+}

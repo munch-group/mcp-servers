@@ -1,0 +1,47 @@
+{% set name = "string-mcp" %}
+{% set version = "1.0.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  path: ../../servers/string
+
+build:
+  number: 0
+  noarch: generic
+  script:
+    - npm install --production
+    - npm run build
+    - mkdir -p $PREFIX/lib/{{ name }}
+    - cp -r build node_modules package.json $PREFIX/lib/{{ name }}/
+    - mkdir -p $PREFIX/bin
+    - ln -s $PREFIX/lib/{{ name }}/build/index.js $PREFIX/bin/string-mcp
+    - chmod +x $PREFIX/lib/{{ name }}/build/index.js
+
+requirements:
+  build:
+    - nodejs >=20
+  run:
+    - nodejs >=20
+
+test:
+  commands:
+    - string-mcp --help || true
+
+about:
+  home: https://github.com/yourusername/mcp_servers
+  license: ISC
+  license_file: ../../LICENSE
+  summary: 'MCP server for STRING protein-protein interaction database'
+  description: |
+    STRING MCP server provides access to the STRING protein-protein
+    interaction database with 9 tools for identifier mapping, network
+    retrieval, interaction partners, enrichment analysis, and homology.
+  doc_url: https://github.com/yourusername/mcp_servers
+  dev_url: https://github.com/yourusername/mcp_servers
+
+extra:
+  recipe-maintainers:
+    - yourusername

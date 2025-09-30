@@ -1,0 +1,47 @@
+{% set name = "ensembl-mcp" %}
+{% set version = "1.0.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  path: ../../servers/ensembl
+
+build:
+  number: 0
+  noarch: generic
+  script:
+    - npm install --production
+    - npm run build
+    - mkdir -p $PREFIX/lib/{{ name }}
+    - cp -r build node_modules package.json $PREFIX/lib/{{ name }}/
+    - mkdir -p $PREFIX/bin
+    - ln -s $PREFIX/lib/{{ name }}/build/index.js $PREFIX/bin/ensembl-mcp
+    - chmod +x $PREFIX/lib/{{ name }}/build/index.js
+
+requirements:
+  build:
+    - nodejs >=20
+  run:
+    - nodejs >=20
+
+test:
+  commands:
+    - ensembl-mcp --help || true
+
+about:
+  home: https://github.com/yourusername/mcp_servers
+  license: ISC
+  license_file: ../../LICENSE
+  summary: 'MCP server for Ensembl genomics REST API'
+  description: |
+    Ensembl MCP server provides access to the Ensembl genomics REST API
+    with 31 tools for gene lookup, sequences, variants, VEP predictions,
+    homology, phenotypes, regulatory features, and more.
+  doc_url: https://github.com/yourusername/mcp_servers
+  dev_url: https://github.com/yourusername/mcp_servers
+
+extra:
+  recipe-maintainers:
+    - yourusername
