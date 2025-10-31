@@ -1,0 +1,16 @@
+{
+  "name": "gh-mcp",
+  "version": "0.1.0",
+  "description": "MCP server that wraps GitHub CLI (gh) functionality",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Python server - no build needed'"
+  },
+  "keywords": [
+    "mcp",
+    "github",
+    "gh"
+  ],
+  "author": "",
+  "license": "MIT"
+}

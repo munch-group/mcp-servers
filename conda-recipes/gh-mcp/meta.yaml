@@ -1,0 +1,44 @@
+{% set name = "gh-mcp" %}
+{% set version = "0.1.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  path: ../../servers/gh
+
+build:
+  number: 0
+  noarch: python
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  host:
+    - python >=3.10
+    - pip
+    - setuptools >=61.0
+  run:
+    - python >=3.10
+    - mcp >=1.0.0
+
+test:
+  commands:
+    - python -c "import server"
+
+about:
+  home: https://github.com/yourusername/mcp_servers
+  license: MIT
+  license_file: ../../LICENSE
+  summary: 'MCP server that wraps GitHub CLI (gh) functionality'
+  description: |
+    GitHub CLI MCP server provides comprehensive access to GitHub functionality
+    through a standardized interface. Features include repository management,
+    pull requests, issues, GitHub Actions, releases, search, gists, and more.
+    Requires the GitHub CLI (gh) to be installed and authenticated.
+  doc_url: https://github.com/yourusername/mcp_servers
+  dev_url: https://github.com/yourusername/mcp_servers
+
+extra:
+  recipe-maintainers:
+    - yourusername

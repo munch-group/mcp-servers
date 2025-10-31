@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "gh": {
+      "command": "python",
+      "args": [
+        "/absolute/path/to/mcp-servers/gh-server/server.py"
+      ],
+      "description": "GitHub CLI wrapper providing access to repos, PRs, issues, workflows, releases, and more"
+    }
+  }
+}

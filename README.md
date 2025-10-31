@@ -10,6 +10,9 @@ A collection of Model Context Protocol (MCP) servers built on shared REST API ut
 # Add channel (replace 'yourusername' with actual Anaconda.org username)
 conda config --add channels yourusername
 
+# Install GitHub CLI server
+conda install gh-mcp
+
 # Install Ensembl server
 conda install ensembl-mcp
 
@@ -39,6 +42,9 @@ mcp_servers/
 │       │   └── types.ts     # Shared TypeScript types
 │       └── package.json
 └── servers/
+    ├── gh/                  # GitHub CLI wrapper MCP server (Python)
+    │   ├── server.py        # Server implementation
+    │   └── pyproject.toml   # Python package configuration
     ├── ensembl/             # Ensembl genomics API server
     │   ├── src/
     │   │   ├── index.ts     # Server entry point
@@ -90,6 +96,38 @@ const result = await factory.executeTool(tools[0], { id: "123" });
 ```
 
 ## Available Servers
+
+### GitHub CLI MCP Server
+
+Wraps the GitHub CLI (`gh`) tool to provide comprehensive access to GitHub functionality:
+
+- Repository management (list, view, create)
+- Pull requests (list, view, create, merge, checkout)
+- Issues (list, view, create, close)
+- GitHub Actions (workflows, runs)
+- Releases (list, view, create)
+- Search (repos, issues)
+- Gists (list, create)
+- Authenticated API requests
+- Authentication status and notifications
+
+**Prerequisites:**
+- GitHub CLI (`gh`) installed and authenticated
+- Python 3.10 or higher
+
+#### Register with Claude Desktop
+
+From the `/Users/kmt/mcp_servers` directory:
+
+```bash
+claude mcp add gh python /Users/kmt/mcp_servers/servers/gh/server.py
+```
+
+Or using conda:
+
+```bash
+conda install gh-mcp
+```
 
 ### Ensembl MCP Server
 

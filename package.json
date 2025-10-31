@@ -11,10 +11,11 @@
     "build:shared": "npm run build -w @mcp/rest-utils",
     "build:ensembl": "npm run build -w ensembl-mcp",
     "build:string": "npm run build -w string-mcp",
-    "conda:build": "npm run conda:build:rest-utils && npm run conda:build:ensembl && npm run conda:build:string",
+    "conda:build": "npm run conda:build:rest-utils && npm run conda:build:ensembl && npm run conda:build:string && npm run conda:build:gh",
     "conda:build:rest-utils": "conda build conda-recipes/rest-utils --output-folder ./conda-bld",
     "conda:build:ensembl": "conda build conda-recipes/ensembl-mcp --output-folder ./conda-bld",
     "conda:build:string": "conda build conda-recipes/string-mcp --output-folder ./conda-bld",
+    "conda:build:gh": "conda build conda-recipes/gh-mcp --output-folder ./conda-bld",
     "conda:upload": "anaconda upload ./conda-bld/**/*.tar.bz2"
   },
   "description": "MCP servers monorepo with shared utilities"
