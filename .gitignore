@@ -6,10 +6,18 @@ node_modules/
 build/
 */build/
 dist/
+*.egg-info/
+.eggs/
 
 # Conda build outputs
 conda-bld/
 *.tar.bz2
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
 
 # Logs
 *.log

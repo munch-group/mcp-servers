@@ -1,0 +1,78 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-servers"
+version = "0.1.1"
+description = "A collection of Model Context Protocol (MCP) servers built on shared REST API utilities"
+authors = [
+    {name = "Kasper Munch", email = "kaspermunch@birc.au.dk"}
+]
+readme = "README.md"
+license = {text = "ISC"}
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.15.0,<2",
+    "requests>=2.32.5,<3",
+    "json5>=0.12.1,<0.13",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: ISC License (ISCL)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "black>=23.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+gh-mcp-server = "servers.gh.server:main"
+
+[project.urls]
+Homepage = "https://github.com/munch-group/mcp-servers"
+Repository = "https://github.com/munch-group/mcp-servers"
+Issues = "https://github.com/munch-group/mcp-servers/issues"
+
+[tool.setuptools]
+packages = ["servers.gh"]
+
+[tool.setuptools.package-data]
+"servers.gh" = ["*.py"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["servers/gh"]
+python_files = "test_*.py"
+asyncio_mode = "auto"
+
+[tool.pixi.project]
+name = "mcp-servers"
+channels = ["conda-forge", "munch-group"]
+platforms = ["osx-arm64"]
+
+[tool.pixi.dependencies]
+mcp = ">=1.15.0,<2"
+requests = ">=2.32.5,<3"
+json5 = ">=0.12.1,<0.13"
+
+[tool.pixi.tasks]
+dev-install = "pip install -e '.[dev]'"
+bump-version = "python scripts/bump-version.py"
+push-release-tag = "python scripts/push-release-tag.py"

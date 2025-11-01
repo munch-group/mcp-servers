@@ -4,7 +4,19 @@ A collection of Model Context Protocol (MCP) servers built on shared REST API ut
 
 ## Installation
 
-### Via Conda (Recommended)
+### Via pip
+
+```bash
+# Install from source
+git clone https://github.com/yourusername/mcp_servers.git
+cd mcp_servers
+pip install -e .
+
+# Or install directly from git
+pip install git+https://github.com/yourusername/mcp_servers.git
+```
+
+### Via Conda
 
 ```bash
 # Add channel (replace 'yourusername' with actual Anaconda.org username)
@@ -117,7 +129,14 @@ Wraps the GitHub CLI (`gh`) tool to provide comprehensive access to GitHub funct
 
 #### Register with Claude Desktop
 
-From the `/Users/kmt/mcp_servers` directory:
+After installing with pip:
+
+```bash
+# The gh-mcp-server command will be available in your PATH
+claude mcp add gh gh-mcp-server
+```
+
+Or from the source directory:
 
 ```bash
 claude mcp add gh python /Users/kmt/mcp_servers/servers/gh/server.py
