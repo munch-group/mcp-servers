@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mcp-servers"
-version = "0.1.1"
+version = "0.1.0"
 description = "A collection of Model Context Protocol (MCP) servers built on shared REST API utilities"
 authors = [
     {name = "Kasper Munch", email = "kaspermunch@birc.au.dk"}
@@ -71,8 +71,14 @@ platforms = ["osx-arm64"]
 mcp = ">=1.15.0,<2"
 requests = ">=2.32.5,<3"
 json5 = ">=0.12.1,<0.13"
+conda-build = ">=25.9.0,<26"
+anaconda-client = ">=1.13.0,<2"
 
 [tool.pixi.tasks]
 dev-install = "pip install -e '.[dev]'"
+register-claude = { cmd = "python scripts/register-claude.py", depends-on = [] }
+register-gh = "python scripts/register-claude.py gh"
+register-ensembl = "python scripts/register-claude.py ensembl"
+register-string = "python scripts/register-claude.py string"
 bump-version = "python scripts/bump-version.py"
 push-release-tag = "python scripts/push-release-tag.py"
