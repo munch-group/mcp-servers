@@ -1,5 +1,19 @@
 # MCP Servers Monorepo
 
+> **⚠️ ARCHIVED**: This monorepo has been split into separate repositories for better maintainability.
+> Please see [MIGRATION.md](MIGRATION.md) for details.
+
+## New Repository Locations
+
+- **[@mcp/rest-utils](https://github.com/munch-group/mcp-rest-utils)** - Shared REST API utilities
+- **[ensembl-mcp](https://github.com/munch-group/ensembl-mcp)** - Ensembl genomics server
+- **[string-mcp](https://github.com/munch-group/string-mcp)** - STRING protein interaction server
+- **[gh-mcp](https://github.com/munch-group/gh-mcp)** - GitHub CLI wrapper server
+
+---
+
+# Original Documentation (for reference)
+
 A collection of Model Context Protocol (MCP) servers built on shared REST API utilities.
 
 ## Installation
